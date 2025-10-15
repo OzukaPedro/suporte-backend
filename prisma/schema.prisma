@@ -19,7 +19,7 @@ model User {
   name      String
   password  String
   createdAt DateTime  @default(now())
-  updatedAt DateTime?
+  updatedAt DateTime? @updatedAt
 }
 
 model Store {
@@ -29,16 +29,18 @@ model Store {
 }
 
 model Access {
-  id            String @id @default(uuid())
-  name          String
-  url           String
-  panelUser     String
-  panelPassword String
-  dbUser        String
-  dbPassword    String
-  ftpHost       String
-  ftpUser       String
-  ftpPassword   String
-  storeId       String
-  store         Store  @relation(fields: [storeId], references: [id])
+  id                String  @id @default(uuid())
+  name              String
+  url               String
+  panelUser         String?
+  panelPassword     String?
+  dbUser            String?
+  dbPassword        String?
+  ftpHost           String?
+  ftpUser           String?
+  ftpPassword       String?
+  clientFtpUser     String?
+  clientFtpPassword String?
+  storeId           String
+  store             Store   @relation(fields: [storeId], references: [id])
 }
