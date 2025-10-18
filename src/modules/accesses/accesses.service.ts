@@ -15,13 +15,8 @@ export class AccessesService {
       select: {
         id: true,
         name: true,
-        url: true,
-        panelUser: true,
-        panelPassword: true,
-        dbUser: true,
-        dbPassword: true,
-        ftpHost: true,
-        ftpUser: true,
+        username: true,
+        password: true,
       },
     });
     return access;
@@ -32,13 +27,8 @@ export class AccessesService {
       select: {
         id: true,
         name: true,
-        url: true,
-        panelUser: true,
-        panelPassword: true,
-        dbUser: true,
-        dbPassword: true,
-        ftpHost: true,
-        ftpUser: true,
+        username: true,
+        password: true,
       },
     });
     return accesses;
@@ -52,13 +42,8 @@ export class AccessesService {
       select: {
         id: true,
         name: true,
-        url: true,
-        panelUser: true,
-        panelPassword: true,
-        dbUser: true,
-        dbPassword: true,
-        ftpHost: true,
-        ftpUser: true,
+        username: true,
+        password: true,
       },
     });
     return access;

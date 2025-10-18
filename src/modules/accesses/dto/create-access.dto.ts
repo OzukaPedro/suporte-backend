@@ -1,54 +1,24 @@
-import { IsOptional, IsString, MinLength } from 'class-validator';
+import { IsNotEmpty, IsString, IsUUID, MinLength } from 'class-validator';
 
 export class CreateAccessDto {
   @IsString()
-  @MinLength(2, {
-    message: 'O nome precisa ter mais de 2 caracteres',
-  })
+  @IsNotEmpty({ message: 'O nome é obrigatório' })
+  @MinLength(2, { message: 'O nome precisa ter pelo menos 2 caracteres' })
   name: string;
 
   @IsString()
-  @MinLength(2, {
-    message: 'O nome precisa ter mais de 2 caracteres',
+  @IsNotEmpty({ message: 'O nome de usuário é obrigatório' })
+  @MinLength(3, {
+    message: 'O nome de usuário precisa ter pelo menos 3 caracteres',
   })
-  url: string;
+  username: string;
 
   @IsString()
-  @IsOptional()
-  panelUser?: string;
+  @IsNotEmpty({ message: 'A senha é obrigatória' })
+  @MinLength(6, { message: 'A senha precisa ter pelo menos 6 caracteres' })
+  password: string;
 
-  @IsString()
-  @IsOptional()
-  panelPassword?: string;
-
-  @IsString()
-  @IsOptional()
-  dbUser?: string;
-
-  @IsString()
-  @IsOptional()
-  dbPassword?: string;
-
-  @IsString()
-  @IsOptional()
-  ftpHost?: string;
-
-  @IsString()
-  @IsOptional()
-  ftpUser?: string;
-
-  @IsString()
-  @IsOptional()
-  ftpPassword?: string;
-
-  @IsString()
-  @IsOptional()
-  clientFtpUser?: string;
-
-  @IsString()
-  @IsOptional()
-  clientFtpPassword?: string;
-
-  @IsString()
+  @IsUUID('4', { message: 'O ID da loja deve ser um UUID válido' })
+  @IsNotEmpty({ message: 'O ID da loja é obrigatório' })
   storeId: string;
 }

@@ -22,25 +22,26 @@ model User {
   updatedAt DateTime? @updatedAt
 }
 
+model Marketplace {
+  id     String  @id @default(uuid())
+  name   String
+  stores Store[]
+}
+
 model Store {
-  id       String   @id @default(uuid())
-  name     String
-  accesses Access[]
+  id            String      @id @default(uuid())
+  name          String
+  baseUrl       String
+  marketplaceId String
+  marketplace   Marketplace @relation(fields: [marketplaceId], references: [id])
+  accesses      Access[]
 }
 
 model Access {
-  id                String  @id @default(uuid())
-  name              String
-  url               String
-  panelUser         String?
-  panelPassword     String?
-  dbUser            String?
-  dbPassword        String?
-  ftpHost           String?
-  ftpUser           String?
-  ftpPassword       String?
-  clientFtpUser     String?
-  clientFtpPassword String?
-  storeId           String
-  store             Store   @relation(fields: [storeId], references: [id])
+  id       String @id @default(uuid())
+  name     String
+  username String
+  password String
+  storeId  String
+  store    Store  @relation(fields: [storeId], references: [id])
 }
