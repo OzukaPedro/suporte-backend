@@ -25,6 +25,12 @@ export class StoresController {
     return this.storesService.findAll();
   }
 
+  // novo endpoint: retorna todos os stores de uma marketplace (com accesses)
+  @Get('marketplace/:marketplaceId')
+  findByMarketplace(@Param('marketplaceId') marketplaceId: string) {
+    return this.storesService.findByMarketplace(marketplaceId);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.storesService.findOne(id);
