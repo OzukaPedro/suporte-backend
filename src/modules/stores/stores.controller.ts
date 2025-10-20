@@ -20,6 +20,11 @@ export class StoresController {
     return this.storesService.create(createStoreDto);
   }
 
+  @Post('access')
+  createWithAccess(@Body() createStoreDto: CreateStoreDto) {
+    return this.storesService.create(createStoreDto);
+  }
+
   @Get()
   findAll() {
     return this.storesService.findAll();

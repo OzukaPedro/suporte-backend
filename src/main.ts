@@ -9,7 +9,7 @@ async function bootstrap() {
     origin: '*', // permite qualquer origem (para dev)
   });
 
-  app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
   app.setGlobalPrefix('api');
 
   await app.listen(process.env.PORT ?? 3000);

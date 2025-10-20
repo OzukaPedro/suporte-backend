@@ -1,5 +1,4 @@
 import { Exclude, Expose } from 'class-transformer';
-import * as accessTypes from '../types/access-types';
 
 @Exclude()
 export class ResponseAccessDto {
@@ -7,7 +6,7 @@ export class ResponseAccessDto {
   id: string;
 
   @Expose()
-  type: accessTypes.AccessType;
+  type: string;
 
   @Expose()
   username: string;

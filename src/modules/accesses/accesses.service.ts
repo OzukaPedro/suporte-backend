@@ -22,6 +22,27 @@ export class AccessesService {
     return access;
   }
 
+  async createMany(
+    createAccessDto: CreateAccessDto[],
+  ): Promise<ResponseAccessDto[]> {
+    const accesses: ResponseAccessDto[] = [];
+    for (const dto of createAccessDto) {
+      const access = await this.prisma.access.create({
+        data: {
+          ...dto,
+        },
+        select: {
+          id: true,
+          type: true,
+          username: true,
+          password: true,
+        },
+      });
+      accesses.push(access);
+    }
+    return accesses;
+  }
+
   async findAll() {
     const accesses = await this.prisma.access.findMany({
       select: {

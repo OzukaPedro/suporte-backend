@@ -7,15 +7,34 @@ import { UpdateStoreDto } from './dto/update-store.dto';
 export class StoresService {
   constructor(private prisma: PrismaService) {}
   async create(createStoreDto: CreateStoreDto) {
+    console.log(createStoreDto);
+    const { accesses, ...storeData } = createStoreDto;
+
     const store = await this.prisma.store.create({
       data: {
-        ...createStoreDto,
+        ...storeData,
+        accesses: accesses
+          ? {
+              createMany: {
+                data: accesses,
+              },
+            }
+          : undefined,
       },
       select: {
         id: true,
         name: true,
+        accesses: {
+          select: {
+            id: true,
+            type: true,
+            username: true,
+            password: true,
+          },
+        },
       },
     });
+
     return store;
   }
 
