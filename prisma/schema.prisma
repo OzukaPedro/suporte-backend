@@ -37,11 +37,18 @@ model Store {
   accesses      Access[]
 }
 
+enum AccessType {
+  Panel
+  Database
+  Ftp
+  ClientFtp
+}
+
 model Access {
-  id       String @id @default(uuid())
-  name     String
+  id       String     @id @default(uuid())
   username String
   password String
+  type     AccessType
   storeId  String
-  store    Store  @relation(fields: [storeId], references: [id])
+  store    Store      @relation(fields: [storeId], references: [id])
 }

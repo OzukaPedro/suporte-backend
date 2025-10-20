@@ -30,7 +30,7 @@ export class StoresService {
         accesses: {
           select: {
             id: true,
-            name: true,
+            type: true,
             username: true,
             password: true,
             storeId: true,
@@ -56,7 +56,7 @@ export class StoresService {
         accesses: {
           select: {
             id: true,
-            name: true,
+            type: true,
             username: true,
             password: true,
             storeId: true,
@@ -100,7 +100,7 @@ export class StoresService {
         accesses: {
           select: {
             id: true,
-            name: true,
+            type: true,
             username: true,
             password: true, // recomendo omitir
             storeId: true,

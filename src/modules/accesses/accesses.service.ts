@@ -14,7 +14,7 @@ export class AccessesService {
       },
       select: {
         id: true,
-        name: true,
+        type: true,
         username: true,
         password: true,
       },
@@ -26,7 +26,7 @@ export class AccessesService {
     const accesses = await this.prisma.access.findMany({
       select: {
         id: true,
-        name: true,
+        type: true,
         username: true,
         password: true,
       },
@@ -41,7 +41,7 @@ export class AccessesService {
       },
       select: {
         id: true,
-        name: true,
+        type: true,
         username: true,
         password: true,
       },

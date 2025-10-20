@@ -1,11 +1,7 @@
-import { IsNotEmpty, IsString, IsUUID, MinLength } from 'class-validator';
+import { IsNotEmpty, IsString, IsUUID, MinLength, IsIn } from 'class-validator';
+import * as accessTypes from '../types/access-types';
 
 export class CreateAccessDto {
-  @IsString()
-  @IsNotEmpty({ message: 'O nome é obrigatório' })
-  @MinLength(2, { message: 'O nome precisa ter pelo menos 2 caracteres' })
-  name: string;
-
   @IsString()
   @IsNotEmpty({ message: 'O nome de usuário é obrigatório' })
   @MinLength(3, {
@@ -17,6 +13,12 @@ export class CreateAccessDto {
   @IsNotEmpty({ message: 'A senha é obrigatória' })
   @MinLength(6, { message: 'A senha precisa ter pelo menos 6 caracteres' })
   password: string;
+
+  @IsIn(accessTypes.ACCESS_TYPES, {
+    message: `O tipo deve ser um dos: ${accessTypes.ACCESS_TYPES.join(', ')}`,
+  })
+  @IsNotEmpty({ message: 'O tipo de acesso é obrigatório' })
+  type: accessTypes.AccessType;
 
   @IsUUID('4', { message: 'O ID da loja deve ser um UUID válido' })
   @IsNotEmpty({ message: 'O ID da loja é obrigatório' })
